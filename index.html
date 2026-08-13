@@ -1,21 +1,89 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>My Portfolio</title>
 
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #dff3ff;
+            color: #d85b91;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 100px auto;
+            padding: 40px;
+            text-align: center;
+            background-color: #eef9ff;
+            border-radius: 20px;
+        }
+
+        h1 {
+            color: #d94f8a;
+            font-size: 42px;
+        }
+
+        h2 {
+            color: #e273a5;
+        }
+
+        #bio {
+            color: #c75b8d;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        #status {
+            color: #e89ab8;
+        }
+    </style>
 </head>
 
 <body>
 
-    <h1>My Portfolio</h1>
+    <div class="container">
 
-    <h2>About Me</h2>
+        <h1 id="name">Loading...</h1>
 
-    <p>My name is Wajd. I am an Information Technology student.</p>
+        <h2>About Me</h2>
+
+        <p id="bio">Loading profile information...</p>
+
+        <p id="status"></p>
+
+    </div>
+
+    <script>
+        async function loadProfile() {
+
+            try {
+                const response = await fetch("/profile");
+
+                if (!response.ok) {
+                    throw new Error("Failed to load profile");
+                }
+
+                const data = await response.json();
+
+                document.getElementById("name").textContent = data.name;
+                document.getElementById("bio").textContent = data.bio;
+
+            } catch (error) {
+
+                document.getElementById("status").textContent =
+                    "Unable to load profile data.";
+
+            }
+        }
+
+        loadProfile();
+    </script>
 
 </body>
-
 </html>
