@@ -1,12 +1,7 @@
-{
-  "name": "portfolio-link-task",
-  "pages_build_output_dir": ".",
+name = "portfolio-link-task"
+pages_build_output_dir = "."
 
-  "d1_databases": [
-    {
-      "binding": "DB",
-      "database_name": "portfolio-db",
-      "database_id": "b626a99a-c7bf-4e65-9d2a-8a4adcd4a35c"
-    }
-  ]
-}
+[[d1_databases]]
+binding = "DB"
+database_name = "portfolio-db"
+database_id = "b626a99a-c7bf-4e65-9d2a-8a4adcd4a35c"
